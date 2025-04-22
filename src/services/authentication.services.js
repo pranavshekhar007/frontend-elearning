@@ -15,7 +15,7 @@ const getConfig = () => {
 };
 export const loginServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "user/login", formData);
+    const response = await axios.post(BASE_URL + "api/user/login", formData);
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
