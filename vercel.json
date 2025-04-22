@@ -1,9 +1,4 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/:match*",
-        "destination": "https://backend-elearning.vercel.app/api/:match*"
-      }
-    ]
-  }
+    "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]
+}
   
