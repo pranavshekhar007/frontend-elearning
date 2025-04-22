@@ -15,7 +15,7 @@ const getConfig = () => {
 };
 export const getCategoryServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "category/list", formData);
+    const response = await axios.post(BASE_URL + "api/category/list", formData);
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
@@ -25,7 +25,7 @@ export const getCategoryServ = async (formData) => {
 };
 export const getCategoryDetailsServ = async (id) => {
   try {
-    const response = await axios.get(BASE_URL + "category/details/"+id);
+    const response = await axios.get(BASE_URL + "api/category/details/"+id);
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
@@ -36,7 +36,7 @@ export const getCategoryDetailsServ = async (id) => {
 
 export const addCategoryServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "category/create", formData, getConfig());
+    const response = await axios.post(BASE_URL + "api/category/create", formData, getConfig());
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
@@ -47,7 +47,7 @@ export const addCategoryServ = async (formData) => {
 
 export const updateCategoryServ = async (formData) => {
   try {
-    const response = await axios.put(BASE_URL + "category/update", formData, getConfig());
+    const response = await axios.put(BASE_URL + "api/category/update", formData, getConfig());
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
@@ -57,7 +57,7 @@ export const updateCategoryServ = async (formData) => {
 };
 export const deleteCategoryServ = async (id) => {
   try {
-    const response = await axios.delete(BASE_URL + "category/delete/"+id,  getConfig());
+    const response = await axios.delete(BASE_URL + "api/category/delete/"+id,  getConfig());
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)

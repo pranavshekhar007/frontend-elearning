@@ -14,7 +14,7 @@ const getConfig = () => {
 // Create Course
 export const addBatchServ = async (formData) => {
     try {
-        const response = await axios.post(BASE_URL + "batch/create", formData, getConfig());
+        const response = await axios.post(BASE_URL + "api/batch/create", formData, getConfig());
         return response;
     } catch (error) {
         throw error;
@@ -24,7 +24,7 @@ export const addBatchServ = async (formData) => {
 // List Courses
 export const getBatchServ = async (formData) => {
     try {
-        const response = await axios.post(BASE_URL + "batch/list", formData);
+        const response = await axios.post(BASE_URL + "api/batch/list", formData);
         return response
     } catch (error) {
         throw error;
@@ -34,7 +34,7 @@ export const getBatchServ = async (formData) => {
 // Get List Details
 export const getBatchDetailsServ = async (id) => {
     try {
-        const response = await axios.get(BASE_URL + "batch/details/"+id);
+        const response = await axios.get(BASE_URL + "api/batch/details/"+id);
         return response;
     } catch (error) {
         throw error;
@@ -44,7 +44,7 @@ export const getBatchDetailsServ = async (id) => {
 //update batch
 export const updateBatchServ = async (id, formData) => {
     try {
-        const response = await axios.put(BASE_URL + `batch/update/${id}`, formData, getConfig()); 
+        const response = await axios.put(BASE_URL + `api/batch/update/${id}`, formData, getConfig()); 
         return response;
     } catch (error) {
         throw error;
@@ -54,7 +54,7 @@ export const updateBatchServ = async (id, formData) => {
 // delete batch
 export const deleteBatchServ = async (id) => {
     try {
-        const response = await axios.delete(BASE_URL + "batch/delete/"+id, getConfig());
+        const response = await axios.delete(BASE_URL + "api/batch/delete/"+id, getConfig());
         return response;
     } catch (error) {
         throw error
@@ -64,7 +64,7 @@ export const deleteBatchServ = async (id) => {
 // get category 
 export const getCategoryServ = async (formData) => {
     try {
-      const response = await axios.post(BASE_URL + "category/list", formData);
+      const response = await axios.post(BASE_URL + "api/category/list", formData);
       return response;
     } catch (error) {
       // Handle error (e.g., log or throw an error)

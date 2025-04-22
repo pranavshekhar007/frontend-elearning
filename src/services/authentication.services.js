@@ -2,8 +2,6 @@ import axios from "axios";
 
 import { BASE_URL } from "../../src/utils/api_base_url_configration";
 
-const token = localStorage.getItem("token");
-
 const getConfig = () => {
   return {
     headers: {

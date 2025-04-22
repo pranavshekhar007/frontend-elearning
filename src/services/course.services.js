@@ -15,7 +15,7 @@ const getConfig = () => {
 // Create Course
 export const addCourseServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "course/create", formData, getConfig());
+    const response = await axios.post(BASE_URL + "api/course/create", formData, getConfig());
     return response;
   } catch (error) {
     console.error("Error creating course:", error);
@@ -26,7 +26,7 @@ export const addCourseServ = async (formData) => {
 // List Courses
 export const getCourseServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "course/list", formData);
+    const response = await axios.post(BASE_URL + "api/course/list", formData);
     return response;
   } catch (error) {
     console.error("Error fetching course list:", error);
@@ -37,7 +37,7 @@ export const getCourseServ = async (formData) => {
 // Get Course Details
 export const getCourseDetailsServ = async (id) => {
   try {
-    const response = await axios.get(BASE_URL + "course/details/" + id);
+    const response = await axios.get(BASE_URL + "api/course/details/" + id);
     return response;
   } catch (error) {
     console.error("Error fetching course details:", error);
@@ -48,7 +48,7 @@ export const getCourseDetailsServ = async (id) => {
 // Update Course
 export const updateCourseServ = async (id, formData) => {
   try {
-    const response = await axios.put(BASE_URL + `course/update/${id}`, formData, getConfig());
+    const response = await axios.put(BASE_URL + `api/course/update/${id}`, formData, getConfig());
     return response;
   } catch (error) {
     console.error("Error updating course:", error);
@@ -59,7 +59,7 @@ export const updateCourseServ = async (id, formData) => {
 // Delete Course
 export const deleteCourseServ = async (id) => {
   try {
-    const response = await axios.delete(BASE_URL + "course/delete/" + id, getConfig());
+    const response = await axios.delete(BASE_URL + "api/course/delete/" + id, getConfig());
     return response;
   } catch (error) {
     console.error("Error deleting course:", error);
@@ -70,7 +70,7 @@ export const deleteCourseServ = async (id) => {
 // get category 
 export const getCategoryServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "category/list", formData);
+    const response = await axios.post(BASE_URL + "api/category/list", formData);
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)
