@@ -165,6 +165,16 @@ function Sidebar({ selectedMenu, selectedItem }) {
         },
       ],
     },
+    {
+      menuIcon: "https://cdn-icons-png.flaticon.com/128/17/17640.png",
+      menu: "AcademyBatch",
+      subMenu: [
+        {
+          name: "AcademyBatch List",
+          path: "/academybatch-list",
+        },
+      ],
+    },
   ];
   const [showMenu, setShowMenu] = useState(selectedMenu);
   return (

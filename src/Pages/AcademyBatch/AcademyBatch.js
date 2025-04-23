@@ -3,16 +3,10 @@ import Sidebar from "../../Components/Sidebar";
 import TopNav from "../../Components/TopNav";
 import NoRecordFound from "../../Components/NoRecordFound";
 import Skeleton from "react-loading-skeleton";
-import {
-  addBatchServ,
-  deleteBatchServ,
-  getBatchServ,
-  getCategoryServ,
-  updateBatchServ,
-} from "../../services/batch.services";
 import { toast } from "react-toastify";
+import { addAcademyBatchServ, deleteAcademyBatchServ, getAcademyBatchServ, getCategoryServ, updateAcademyBatchServ } from "../../services/academyBatch.service";
 
-const BatchList = () => {
+const AcademyBatchList = () => {
   const [list, setList] = useState([]);
   const [showSkelton, setShowSkelton] = useState(false);
   const [statics, setStatics] = useState(null);
@@ -40,23 +34,23 @@ const BatchList = () => {
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
-      handleGetBatch();
+      handleGetAcademyBatch();
     }, 500);
     return () => clearTimeout(debounceTimer);
   }, [payload.searchKey]);
 
   useEffect(() => {
-    handleGetBatch();
+    handleGetAcademyBatch();
   }, [payload.sortByField, payload.sortOrder, payload.status]);
 
-  const handleGetBatch = async () => {
+  const handleGetAcademyBatch = async () => {
     if (list.length === 0) setShowSkelton(true);
     try {
-      const res = await getBatchServ(payload);
+      const res = await getAcademyBatchServ(payload);
       setList(res?.data?.data || []);
       setStatics(res?.data?.documentCount);
     } catch (error) {
-      toast.error("Failed to fetch Batch.");
+      toast.error("Failed to fetch AcademyBatch.");
     } finally {
       setIsLoading(false);
       setShowSkelton(false);
@@ -64,37 +58,37 @@ const BatchList = () => {
   };
 
   useEffect(() => {
-    handleGetBatch();;
+    handleGetAcademyBatch();;
   }, [payload.sortByField, payload.sortOrder, payload.status]);
 
   const staticsArr = [
     {
-      title: "Total Batch",
+      title: "Total Academy Batch",
       count: statics?.totalCount,
       bgColor: "#6777EF",
     },
     {
-      title: "Active Batch",
+      title: "Active Academy Batch",
       count: statics?.activeCount,
       bgColor: "#63ED7A",
     },
     {
-      title: "Inactive Batch",
+      title: "Inactive Academy Batch",
       count: statics?.inactiveCount,
       bgColor: "#FFA426",
     },
   ];
 
-  const handleAddBatch = async () => {
+  const handleAddAcademyBatch = async () => {
     const { name, image, duration, startDate, price, status, type } = batchFormData;
     if (!name || !image || !duration || !startDate || !price || !status || !type) {
       return toast.error("All fields are required.");
     }
 
     try {
-      const res = await addBatchServ(batchFormData);
+      const res = await addAcademyBatchServ(batchFormData);
       if (res?.data?.statusCode === 200) {
-        toast.success("Batch added successfully.");
+        toast.success("AcademyBatch added successfully.");
         setShowModal(false);
         setBatchFormData({
           name: "",
@@ -106,14 +100,14 @@ const BatchList = () => {
           type: "",
           categoryId: "",
         });
-        handleGetBatch();
+        handleGetAcademyBatch();
       }
     } catch (error) {
       toast.error(error?.response?.data?.message || "Internal Server Error");
     }
   };
 
-  const handleEditBatch = (batch) => {
+  const handleEditAcademyBatch = (batch) => {
     setBatchFormData({
       name: batch.name,
       image: batch.image,
@@ -129,7 +123,7 @@ const BatchList = () => {
     setShowModal(true);
   };
 
-  const handleUpdateBatch = async () => {
+  const handleUpdateAcademyBatch = async () => {
     if (
       !batchFormData.name ||
       !batchFormData.image ||
@@ -143,9 +137,9 @@ const BatchList = () => {
     }
 
     try {
-      const response = await updateBatchServ(editId, batchFormData);
+      const response = await updateAcademyBatchServ(editId, batchFormData);
       if (response?.data?.statusCode === 200) {
-        toast.success("Batch updated successfully.");
+        toast.success("AcademyBatch updated successfully.");
         setShowModal(false);
         setIsEditing(false);
         setBatchFormData({
@@ -158,7 +152,7 @@ const BatchList = () => {
           type: "",
           categoryId: "",
         });
-        handleGetBatch();
+        handleGetAcademyBatch();
       } else {
         toast.error("Failed to update Batch.");
       }
@@ -167,13 +161,13 @@ const BatchList = () => {
     }
   };
 
-  const handleDeleteBatch = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this Batch?")) return;
+  const handleDeleteAcademyBatch = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this AcademyBatch?")) return;
     try {
-      const res = await deleteBatchServ(id);
+      const res = await deleteAcademyBatchServ(id);
       if (res?.data?.statusCode === 200) {
-        toast.success("Batch deleted successfully.");
-        handleGetBatch();
+        toast.success("AcademyBatch deleted successfully.");
+        handleGetAcademyBatch();
       }
     } catch (error) {
       toast.error("Failed to delete Batch.");
@@ -200,7 +194,7 @@ const BatchList = () => {
   if (isLoading) return <p className="text-center mt-4">Loading...</p>;
   return (
     <div className="bodyContainer">
-      <Sidebar selectedMenu="Batch" selectedItem="Batch List" />
+      <Sidebar selectedMenu="AcademyBatch" selectedItem="AcademyBatch List" />
       <div className="mainContainer">
         <TopNav />
         <div className="p-lg-4 p-md-3 p-2">
@@ -286,7 +280,7 @@ const BatchList = () => {
                       >
                         Sr. No
                       </th>
-                      <th className="text-center py-3">Batch Name</th>
+                      <th className="text-center py-3">AcademyBatch Name</th>
                       <th className="text-center py-3">Image</th>
                       <th className="text-center py-3">Category Name</th>
                       <th className="text-center py-3">Duration</th>
@@ -393,13 +387,13 @@ const BatchList = () => {
                                 </td>
                                 <td className="text-center">
                                   <a
-                                    onClick={() => handleEditBatch(v)}
+                                    onClick={() => handleEditAcademyBatch(v)}
                                     className="btn btn-info mx-2 text-light shadow-sm"
                                   >
                                     Edit
                                   </a>
                                   <a
-                                    onClick={() => handleDeleteBatch(v?._id)}
+                                    onClick={() => handleDeleteAcademyBatch(v?._id)}
                                     className="btn btn-warning mx-2 text-light shadow-sm"
                                   >
                                     Delete
@@ -429,7 +423,7 @@ const BatchList = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">
-                {isEditing ? "Edit Batch" : "Add Batch"}
+                {isEditing ? "Edit AcademyBatch" : "Add AcademyBatch"}
               </h5>
               <button
                 type="button"
@@ -546,7 +540,7 @@ const BatchList = () => {
                         </option>
                       ))}
                     </select>
-                  ) : (
+                  ) :  (
                     <input
                       type="text"
                       className="form-control"
@@ -572,7 +566,7 @@ const BatchList = () => {
               </button>
               <button
                 className="btn btn-success"
-                onClick={isEditing ? handleUpdateBatch : handleAddBatch}
+                onClick={isEditing ? handleUpdateAcademyBatch : handleAddAcademyBatch}
               >
                 {isEditing ? "Update" : "Submit"}
               </button>
@@ -584,4 +578,4 @@ const BatchList = () => {
   );
 };
 
-export default BatchList;
+export default AcademyBatchList;

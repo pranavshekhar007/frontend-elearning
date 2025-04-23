@@ -20,6 +20,7 @@ import VendorApproval from '../Pages/Vendor/VendorApproval';
 import AdminList from '../Pages/Admin/AdminList';
 import CourseList from '../Pages/Course/CourseList';
 import BatchList from '../Pages/Batch/BatchList';
+import AcademyBatchList from '../Pages/AcademyBatch/AcademyBatch';
 
 function AuthenticatedRoutes() {
   return (
@@ -73,6 +74,7 @@ function AuthenticatedRoutes() {
 
         {/* batch  */}
         <Route path='/batch-list' element={<BatchList />} />
+        <Route path='/academybatch-list' element={<AcademyBatchList/>}/>
         
     </Routes>
   )
