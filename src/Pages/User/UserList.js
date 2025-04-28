@@ -123,7 +123,7 @@ function UserList() {
       lastName: user.lastName,
       email: user.email,
       phoneNumber: user.phoneNumber,
-      password: "", // Keep blank or use some placeholder
+      password: user.password, // Keep blank or use some placeholder
     });
     setEditId(user._id);
     setIsEditing(true);
