@@ -15,6 +15,16 @@ function Sidebar({ selectedMenu, selectedItem }) {
         },
       ],
     },
+    {
+      menuIcon: "https://cdn-icons-png.flaticon.com/128/12724/12724695.png",
+      menu: "User",
+      subMenu: [
+        {
+          name: "User List",
+          path: "/User-list",
+        },
+      ],
+    },
     // {
     //   menuIcon: "https://cdn-icons-png.flaticon.com/128/2435/2435245.png",
     //   menu: "Orders",
@@ -153,6 +163,10 @@ function Sidebar({ selectedMenu, selectedItem }) {
           name: "Course List",
           path: "/course-list",
         },
+        {
+          name: "AcademyCourse List",
+          path: "/academyCourse-list",
+        },
       ],
     },
     {
@@ -163,18 +177,32 @@ function Sidebar({ selectedMenu, selectedItem }) {
           name: "Batch List",
           path: "/batch-list",
         },
-      ],
-    },
-    {
-      menuIcon: "https://cdn-icons-png.flaticon.com/128/17/17640.png",
-      menu: "AcademyBatch",
-      subMenu: [
         {
           name: "AcademyBatch List",
           path: "/academybatch-list",
         },
       ],
     },
+    {
+      menuIcon: "https://cdn-icons-png.flaticon.com/128/5110/5110947.png",
+      menu: "Booking",
+      subMenu: [
+        {
+          name: "Booking List",
+          path: "/booking-list",
+        },
+      ],
+    },
+    // {
+    //   menuIcon: "https://cdn-icons-png.flaticon.com/128/17/17640.png",
+    //   menu: "AcademyBatch",
+    //   subMenu: [
+    //     {
+    //       name: "AcademyBatch List",
+    //       path: "/academybatch-list",
+    //     },
+    //   ],
+    // },
   ];
   const [showMenu, setShowMenu] = useState(selectedMenu);
   return (

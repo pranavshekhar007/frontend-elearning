@@ -13,9 +13,12 @@ const getConfig = () => {
     },
   };
 };
+
+
+
 export const getBookingListServ = async (formData) => {
   try {
-    const response = await axios.post(BASE_URL + "booking/list", formData);
+    const response = await axios.post(BASE_URL + "api/booking/list", formData);
     return response;
   } catch (error) {
     // Handle error (e.g., log or throw an error)

@@ -194,7 +194,7 @@ const AcademyBatchList = () => {
   if (isLoading) return <p className="text-center mt-4">Loading...</p>;
   return (
     <div className="bodyContainer">
-      <Sidebar selectedMenu="AcademyBatch" selectedItem="AcademyBatch List" />
+      <Sidebar selectedMenu="Batch" selectedItem="AcademyBatch List" />
       <div className="mainContainer">
         <TopNav />
         <div className="p-lg-4 p-md-3 p-2">

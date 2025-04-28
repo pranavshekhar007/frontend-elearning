@@ -20,7 +20,10 @@ import VendorApproval from '../Pages/Vendor/VendorApproval';
 import AdminList from '../Pages/Admin/AdminList';
 import CourseList from '../Pages/Course/CourseList';
 import BatchList from '../Pages/Batch/BatchList';
-import AcademyBatchList from '../Pages/AcademyBatch/AcademyBatch';
+import AcademyBatchList from '../Pages/Batch/AcademyBatch';
+import AcademyCourseList from '../Pages/Course/AcademyCourseList';
+import UserList from '../Pages/User/UserList';
+import BookingList from '../Pages/Booking/BookingList';
 
 function AuthenticatedRoutes() {
   return (
@@ -71,10 +74,17 @@ function AuthenticatedRoutes() {
 
         {/* course  */}
         <Route path='/course-list' element={<CourseList />} />
+        <Route path='/academyCourse-list' element={<AcademyCourseList />} />
 
         {/* batch  */}
         <Route path='/batch-list' element={<BatchList />} />
         <Route path='/academybatch-list' element={<AcademyBatchList/>}/>
+
+        {/* User  */}
+        <Route path='user-list' element={<UserList/>} />
+
+        {/* Booking  */}
+        <Route path='booking-list' element={<BookingList />} />
         
     </Routes>
   )
